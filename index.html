@@ -43,7 +43,7 @@
             <span id="risk-badge" class="badge">—</span>
           </div>
           <div class="card-body center">
-            <div class="outcome-label">Estimated probability of a suicide attempt in the past 12 months</div>
+            <div class="outcome-label">Estimated suicide attempt risk</div>
             <div id="risk-icon" class="risk-icon" aria-hidden="true"></div>
             <div id="risk-prob" class="risk-prob">—</div>
             <div id="risk-text" class="risk-text"></div>
@@ -72,8 +72,8 @@
       </div>
 
       <div class="notice">
-        <strong>Research use only.</strong> This tool estimates the probability that an adolescent who reports serious suicidal ideation
-        has made a suicide attempt in the past 12 months, based on self-reported survey items. It does not predict future suicidal behavior
+        <strong>Research use only.</strong> This tool estimates suicide attempt risk for an adolescent who reports serious suicidal ideation,
+        based on how closely their self-reported characteristics resemble those of ideators who have attempted suicide. It has not been validated for predicting future attempts
         and must not replace clinical assessment. A low estimate does not mean that an adolescent is safe.
         <span class="crisis">If someone is in immediate danger, call local emergency services. In the US, call or text <b>988</b>
         (Suicide &amp; Crisis Lifeline).</span>
@@ -85,11 +85,11 @@
         <div class="card-body">
           <h2>About the model</h2>
           <p>The calculator implements the final logistic regression (LR) model from the study
-            <em>“Development and validation of a machine learning model for identifying suicide attempts among adolescents with suicidal ideation: a national survey-based study.”</em></p>
+            <em>“Machine Learning–Based Identification of Adolescents at High Risk of Suicide Attempt Among Those With Suicidal Ideation Using the US Youth Risk Behavior Survey 2019–2025: Model Development and Validation Study.”</em></p>
           <table class="kv">
             <tr><th>Data source</th><td>US national Youth Risk Behavior Survey (YRBS), 2019, 2021, 2023 and 2025</td></tr>
             <tr><th>Population</th><td>Students aged 14–17 years in grades 9–12 reporting serious suicidal ideation in the past 12 months (n = 9,824)</td></tr>
-            <tr><th>Outcome</th><td>Self-reported suicide attempt (≥1) in the past 12 months; prevalence 41.0%</td></tr>
+            <tr><th>Outcome</th><td>Self-reported suicide attempt (≥1) in the past 12 months, as a marker of the transition from ideation to action; prevalence 41.0%</td></tr>
             <tr><th>Development</th><td>Training set n = 6,876 (70%); test set n = 2,948 (30%), stratified by outcome and survey year</td></tr>
             <tr><th>Predictors</th><td>18 predictors selected by both LASSO and Boruta in the training set</td></tr>
             <tr><th>Algorithm</th><td>L2-penalized logistic regression (C = 0.1); selected among 8 algorithms with comparable discrimination and calibration as the least complex model</td></tr>
@@ -100,7 +100,7 @@
 
           <h2>Important limitations</h2>
           <ul class="bullets">
-            <li>Predictors and outcome were measured concurrently; the model identifies past-year attempts and does not forecast future attempts.</li>
+            <li>Predictors and outcome were measured concurrently; whether the model predicts future attempts among ideators who have not yet attempted requires prospective validation.</li>
             <li>All information is self-reported in an anonymous school-based survey; performance in clinical settings has not been evaluated.</li>
             <li>The model was developed in US high school students and has not been externally validated.</li>
             <li>Positive predictive value depends on prevalence and will be lower in populations with fewer attempts (see Table S10 of the paper).</li>

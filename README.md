@@ -9,7 +9,7 @@ The page runs entirely in the browser (HTML + JavaScript). There is no server; n
 ## What it does
 
 - Takes the 18 model predictors (demographics, mental health, substance use, violence victimization, sexual behavior and sports-related concussion).
-- Returns the estimated probability of a self-reported suicide attempt in the past 12 months. It is classified against the F1-optimal threshold of 0.36.
+- Returns an estimated suicide attempt risk for adolescents who report serious suicidal ideation. It is classified against the F1-optimal threshold of 0.36.
 - Shows a SHAP waterfall plot on the probability scale.
   - The SHAP values come from a permutation explainer with 300 antithetic permutations and a fixed seed.
   - The background sample is 200 observations from the training set.
@@ -50,8 +50,8 @@ To use the calculator offline, open `index.html` directly in a browser. No build
 
 This calculator is for research use only.
 
-- It estimates the probability that an adolescent who reports serious suicidal ideation has made a suicide attempt in the past 12 months.
-- It does not predict future suicidal behavior and does not replace clinical assessment.
+- It estimates suicide attempt risk based on how closely an adolescent with suicidal ideation resembles ideators who have attempted suicide (cross-sectional training data).
+- It has not been validated for predicting future attempts and does not replace clinical assessment.
 - The model was developed with US high school students using self-reported survey data and has not been externally validated.
 
 If someone is in immediate danger, call local emergency services. In the US, call or text 988 (Suicide & Crisis Lifeline).
