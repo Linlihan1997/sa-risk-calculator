@@ -86,7 +86,7 @@
     var pr = document.getElementById("risk-prob"); pr.textContent = fmt(p); pr.className = "risk-prob " + (high ? "high" : "low");
     document.getElementById("risk-icon").innerHTML = high ? ICON_HIGH : ICON_LOW;
     document.getElementById("risk-text").textContent = high
-      ? "The estimated probability is at or above the model threshold (" + fmt(M.threshold) + "), indicating high suicide attempt risk; prompt assessment is recommended."
+      ? "The estimated probability is at or above the model threshold (" + fmt(M.threshold) + "), indicating high suicide attempt risk; timely assessment and intervention are recommended."
       : "The estimated probability is below the model threshold (" + fmt(M.threshold) + "). This does not rule out suicide attempt risk.";
     document.getElementById("meter-marker").style.left = (p * 100) + "%";
     document.getElementById("meter-threshold").style.left = (M.threshold * 100) + "%";
