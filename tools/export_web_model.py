@@ -7,7 +7,11 @@ from sklearn.pipeline import Pipeline
 from sklearn.linear_model import LogisticRegression
 warnings.filterwarnings("ignore")
 
-D = "/home/claude/outputs/seed20"; OUT = "/home/claude/web/sa-risk-calculator"
+import sys, pathlib
+REPO = pathlib.Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(REPO / "analysis"))
+from config import DERIVED as D, RESULTS
+OUT = REPO   # web calculator files are written to the repository root
 full = pd.read_csv(f"{D}/yrbs_ideators_imputed_full.csv")
 strata = full["sa"].astype(int).astype(str) + "_" + full["year"].astype(str)
 train, test = train_test_split(full, test_size=0.30, stratify=strata, random_state=20)
@@ -45,7 +49,7 @@ model["base_value"] = float(p_bg.mean())
 json.dump(model, open(f"{OUT}/model.json", "w"), indent=1)
 # verification cases: all test rows with sklearn probabilities
 ver = test[VARS].copy(); ver["p_sklearn"] = m.predict_proba(test[VARS])[:, 1]
-ver.to_csv("/home/claude/web/verify_test_rows.csv", index=False)
+ver.to_csv(RESULTS / "verify_test_rows.csv", index=False)
 
 # Python permutation SHAP for two cases, same background, for cross-checking the JS implementation
 import shap
@@ -58,6 +62,6 @@ def f(X):
 expl = shap.explainers.Permutation(f, enc(bg[VARS]), seed=2026)
 cases = test.iloc[[0, 5]][VARS]
 sv = expl(enc(cases), max_evals=4000)
-pd.DataFrame(sv.values, columns=VARS).assign(base=sv.base_values).to_csv("/home/claude/web/verify_shap_python.csv", index=False)
-cases.to_csv("/home/claude/web/verify_shap_cases.csv", index=False)
+pd.DataFrame(sv.values, columns=VARS).assign(base=sv.base_values).to_csv(RESULTS / "verify_shap_python.csv", index=False)
+cases.to_csv(RESULTS / "verify_shap_cases.csv", index=False)
 print("intercept", model["intercept"], "base", model["base_value"], "n_num", k, "n_cat", len(cat))

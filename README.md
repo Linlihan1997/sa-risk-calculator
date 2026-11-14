@@ -2,7 +2,9 @@
 
 A static web calculator for the final logistic regression model from:
 
-> Development and validation of a machine learning model for identifying suicide attempts among adolescents with suicidal ideation: a national survey-based study.
+> Machine Learning to Identify Adolescents With Suicidal Ideation at High Risk of Suicide Attempt: Development and Validation Study.
+
+The full analysis code (data preparation, feature selection, model development and evaluation) is in [`analysis/`](analysis/).
 
 The page runs entirely in the browser (HTML + JavaScript). There is no server; no data are sent or stored.
 
