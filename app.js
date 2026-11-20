@@ -131,7 +131,7 @@
       var xt = X(t);
       svg.push('<line x1="' + xt + '" y1="' + top + '" x2="' + xt + '" y2="' + axisY + '" stroke="#eef0f3"/>');
       svg.push('<line x1="' + xt + '" y1="' + axisY + '" x2="' + xt + '" y2="' + (axisY + 5) + '" stroke="#333"/>');
-      svg.push('<text x="' + xt + '" y="' + (axisY + 18) + '" font-size="12" text-anchor="middle" fill="#333">' + t.toFixed(step < 0.05 ? 2 : 1) + "</text>");
+      svg.push('<text x="' + xt + '" y="' + (axisY + 18) + '" font-size="12" text-anchor="middle" fill="#333">' + t.toFixed(step >= 0.1 - 1e-9 ? 1 : step >= 0.01 - 1e-9 ? 2 : 3) + "</text>");
     }
     svg.push('<line x1="' + L + '" y1="' + axisY + '" x2="' + Rr + '" y2="' + axisY + '" stroke="#333"/>');
     // f(x) and E[f(X)] reference lines
